@@ -1,0 +1,95 @@
+//
+//  main.cpp
+//  Dollar and Won Converter
+//
+//  Created by Steve Snyder on 5/16/17.
+//  Copyright © 2017 Steve Snyder. All rights reserved.
+//
+// Convert Korean Won to US Dollars and Back
+//
+//
+//  Algorithm
+//  1. Ask user to select whether they want to convert their won to dollars or their dollars to won by inputing the appropriate choice
+//  2. Ask user to input currency value
+//  3. Store value in a double variable
+//  4. Either divide the value by the ratio of Korean Won to US Dollars and save in a double variable, or multiply the value by the ratio of US Dollars to Korean Won and save in a double variable
+//  5. Return the value to the user
+//
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// function prototypes
+int dollarAndWon();
+
+// global constants
+const double wonPerDollar = 1142.78;
+const int    exitChoice = 4;
+int main()
+{
+    int input = -1;
+    do
+    {
+        cout << "Welcome to the Main Event! \n \n----Menu---- \n\nPlease select from the following options, and input the number based on what you want to do. \n"  << endl; // introduces program to user
+        cout << "Dollar <-> Won Conversion (1) " << endl; // options for user interaction
+        cout << "Exit (4) \n" << endl;
+        cout << "What would you like to do? > " << endl; // prompt for user input
+        cin >> input; // input should be either 1, 2, 3, or 4
+        
+        switch (input)
+        {
+            case 1:
+                dollarAndWon();
+                break;
+            default:
+                if (input != exitChoice)
+                {
+                    cout << "That is not a valid choice, please try again\n";
+                }
+        }
+    } while (input != exitChoice);
+    cout << "Thank you for using the Currency Conversion program.  Have a good day!" << endl;
+}
+
+
+int dollarAndWon()
+{
+    cout << "Welcome to the Dollar and Won Currency Converter! \n \n----Menu---- \n\nPlease select from the following options, and input the number based on what you want to do. \n"  << endl; // introduces program to user
+    cout << "Convert from Korean Won to US Dollars (1) " << endl; // options for user interaction
+    cout << "Convert from US Dollars to Korean Won (2) " << endl;
+    cout << "Return to Main Currency Conversion Screen (3) " << endl;
+    int input;
+    cout << "What would you like to do? > " << endl; // prompt for user input
+    cin >> input; // input should be either 1, 2, 3
+    
+    if (input==1) // if user inputs 1
+    {
+        cout << "Please input the amount of Korean Won you have > " << endl; // user prompt for input
+        double won, dollar; // storing input in double int
+        cin >> won; // this being option 1, the user will enter a value stored in the int won
+        dollar = round(won/1142.78*100.0)/100.0; // math opperation
+        cout << "The amount of Korean Won you have is equal to the value of > " << "$" << dollar << endl; // returns value to user along with explaination of value
+    }
+    
+    else if (input==2) // if user inputs 2
+    {
+        cout << "Please input the amount of US Dollars you have > " << endl; // user prompt for input
+        
+        double dollar = 0.0, won = 0.0; // storing input in double int
+        cin >> dollar; // this being option 2, the user will enter a value stored in the int dollar
+        won = round(dollar * 1142.78); // math opperation
+        cout << "The amount of US Dollars you have is equal to the value of > " << "₩" << won << endl; // returns value to user along with explaination of value
+    }
+    
+    else if (input==3) // if user inputs 3
+    {
+        cout << "Now loading..." << endl; // message to user
+    }
+    
+    else {
+        cout << "Please choose a valid option. " << endl; // prompts user to enter a different value
+    }
+    
+    return 0;
+}
