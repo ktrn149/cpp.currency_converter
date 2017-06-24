@@ -25,15 +25,16 @@ int dollarAndWon();
 
 // global constants
 const double wonPerDollar = 1142.78;
-const int    exitChoice = 4;
+const int    exitChoice = 2;
+
 int main()
 {
     int input = -1;
     do
     {
-        cout << "Welcome to the Main Event! \n \n----Menu---- \n\nPlease select from the following options, and input the number based on what you want to do. \n"  << endl; // introduces program to user
-        cout << "Dollar <-> Won Conversion (1) " << endl; // options for user interaction
-        cout << "Exit (4) \n" << endl;
+        cout << "\n Welcome to the Currency Converter! \n \n----Menu---- \n\nPlease select from the following options, and input the number based on what you want to do. \n"  << endl; // introduces program to user
+        cout << "US Dollar <-> Korean Won Conversion (1) " << endl; // options for user interaction
+        cout << "Exit (2) \n" << endl;
         cout << "What would you like to do? > " << endl; // prompt for user input
         cin >> input; // input should be either 1, 2, 3, or 4
         
@@ -55,7 +56,7 @@ int main()
 
 int dollarAndWon()
 {
-    cout << "Welcome to the Dollar and Won Currency Converter! \n \n----Menu---- \n\nPlease select from the following options, and input the number based on what you want to do. \n"  << endl; // introduces program to user
+    cout << "\nWelcome to the US Dollar <-> Korean Won Currency Converter! \n \n----Menu---- \n\nPlease select from the following options, and input the number based on what you want to do. \n"  << endl; // introduces program to user
     cout << "Convert from Korean Won to US Dollars (1) " << endl; // options for user interaction
     cout << "Convert from US Dollars to Korean Won (2) " << endl;
     cout << "Return to Main Currency Conversion Screen (3) " << endl;
@@ -65,30 +66,30 @@ int dollarAndWon()
     
     if (input==1) // if user inputs 1
     {
-        cout << "Please input the amount of Korean Won you have > " << endl; // user prompt for input
+        cout << "\nPlease input the amount of Korean Won you have \n> " << endl; // user prompt for input
         double won, dollar; // storing input in double int
         cin >> won; // this being option 1, the user will enter a value stored in the int won
-        dollar = round(won/1142.78*100.0)/100.0; // math opperation
-        cout << "The amount of Korean Won you have is equal to the value of > " << "$" << dollar << endl; // returns value to user along with explaination of value
+        dollar = round(won/wonPerDollar*100.0)/100.0; // math opperation
+        cout << "\nThe amount of Korean Won you have is equal to the value of " << "$" << dollar << endl; // returns value to user along with explaination of value
     }
     
     else if (input==2) // if user inputs 2
     {
-        cout << "Please input the amount of US Dollars you have > " << endl; // user prompt for input
+        cout << "Please input the amount of US Dollars you have \n> " << endl; // user prompt for input
         
-        double dollar = 0.0, won = 0.0; // storing input in double int
+        long int dollar = 0.0, won = 0.0; // storing input in double int, declaring them to be 0.0 so that we know exactly what they are :D
         cin >> dollar; // this being option 2, the user will enter a value stored in the int dollar
-        won = round(dollar * 1142.78); // math opperation
-        cout << "The amount of US Dollars you have is equal to the value of > " << "₩" << won << endl; // returns value to user along with explaination of value
+        won = round(wonPerDollar * dollar); // math opperation
+        cout << "\nThe amount of US Dollars you have is equal to the value of " << "₩" << won << endl; // returns value to user along with explaination of value
     }
     
     else if (input==3) // if user inputs 3
     {
-        cout << "Now loading..." << endl; // message to user
+        cout << "\nNow loading..." << endl; // message to user
     }
     
     else {
-        cout << "Please choose a valid option. " << endl; // prompts user to enter a different value
+        cout << "\nPlease choose a valid option. " << endl; // prompts user to enter a different value
     }
     
     return 0;
